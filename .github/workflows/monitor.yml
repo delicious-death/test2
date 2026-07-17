@@ -1,0 +1,31 @@
+name: Proxy Monitor
+   on:
+     schedule:
+       - cron: '*/5 * * * *' # 每5分钟运行一次
+     workflow_dispatch:      # 允许手动触发测试
+
+   jobs:
+     monitor:
+       runs-on: ubuntu-latest
+       permissions:
+         contents: write # 授权，允许机器人写入 log.txt 回来
+       steps:
+         - name: Checkout code
+           uses: actions/checkout@v3
+
+         - name: Set up Python
+           uses: actions/setup-python@v4
+           with: 
+             python-version: '3.9'
+
+         - name: Run Python script
+           run: python monitor.py
+
+         - name: Commit and push log
+           run: |
+             git config --global user.name "github-actions[bot]"
+             git config --global user.email "github-actions[bot]@users.noreply.github.com"
+             git add log.txt
+             # 这一行表示：如果有改动（即新加了日志），就保存并推送；如果没有改动就不报错跳过。
+             git commit -m "Auto update ping log" || echo "No changes to commit"
+             git push
