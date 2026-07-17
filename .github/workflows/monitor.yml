@@ -19,6 +19,9 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Install dependencies
+        run: pip install requests
+
       - name: Run Python script
         run: python monitor.py
 
