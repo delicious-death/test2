@@ -25,6 +25,7 @@ timestamp = (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).strftime(
 status_str = "OK" if is_ok else "FAIL"
 log_entry = f"{timestamp} | {status_str}\n"
 
+# 测试
 # 2. 写入日志文件
 with open("log.txt", "a") as f:
     f.write(log_entry)
