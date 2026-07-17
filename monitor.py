@@ -5,9 +5,9 @@ import json
 import os
 
 # ==================== 配置 ====================
-NODE_IP = "你的代理服务器IP"      # 修改这里
-NODE_PORT = 443                 # 修改这里
-FEISHU_WEBHOOK = "你的飞书Webhook地址"  # 修改这里
+NODE_IP = "c83s2.portablesubmarines.com"      # 修改这里
+NODE_PORT = 39179                 # 修改这里
+FEISHU_WEBHOOK = "https://open.feishu.cn/open-apis/bot/v2/hook/5f984282-4adc-4280-9dd0-a14695daa98a"  # 修改这里
 # ============================================
 
 def check_node():
